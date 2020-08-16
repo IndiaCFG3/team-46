@@ -9,6 +9,10 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 
+//Routes
+const classRoutes = require("./routes/class")
+const unitRoutes = require("./routes/unitEvaluation")
+const studentRoutes  = require('./routes/studentObservation')
 
 // Database Connection
 mongoose.connect(process.env.DATABASECLOUD, {
@@ -24,6 +28,11 @@ mongoose.connect(process.env.DATABASECLOUD, {
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+
+//Routes
+app.use("/api", classRoutes);
+app.use("/api", unitRoutes);
+app.use("/api", studentRoutes);
 
 //PORT
 const port = process.env.PORT || 8000
