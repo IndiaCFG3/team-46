@@ -78,6 +78,9 @@ var unitEvaluationSchema = new mongoose.Schema({
    st2: {
     type: ObjectId,
     ref: "Class"
+   },
+   photo: {
+       type: String
    }
    
 },{timestamps:true});

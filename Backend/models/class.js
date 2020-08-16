@@ -23,6 +23,9 @@ var classSchema = new Schema({
     },
     notesForMentor: {
         type: String
+    },
+    photo: {
+        type: String
     }
 
 },{timestamps:true});
