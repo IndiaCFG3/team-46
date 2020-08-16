@@ -35,7 +35,13 @@ import {
   Table,
   Container,
   Row,
-  Col
+  Col,
+  FormGroup,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
 } from "reactstrap";
 
 // core components
@@ -52,7 +58,7 @@ class Index extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      activeNav: 1,
+      activeNav: 0,
       chartExample1Data: "data1"
     };
     if (window.Chart) {
@@ -82,7 +88,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-light ls-1 mb-1">
                         Overview
                       </h6>
-                      <h2 className="text-white mb-0">Sales value</h2>
+                      <h2 className="text-white mb-0">Students Attached in 2020</h2>
                     </div>
                     <div className="col">
                       <Nav className="justify-content-end" pills>
@@ -135,7 +141,7 @@ class Index extends React.Component {
                       <h6 className="text-uppercase text-muted ls-1 mb-1">
                         Performance
                       </h6>
-                      <h2 className="mb-0">Total orders</h2>
+                      <h2 className="mb-0">Ratings Received</h2>
                     </div>
                   </Row>
                 </CardHeader>
@@ -157,7 +163,7 @@ class Index extends React.Component {
                 <CardHeader className="border-0">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h3 className="mb-0">Page visits</h3>
+                      <h3 className="mb-0">Schools Attached (2020 Stats)</h3>
                     </div>
                     <div className="col text-right">
                       <Button
@@ -174,56 +180,56 @@ class Index extends React.Component {
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">Page name</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col">Unique users</th>
-                      <th scope="col">Bounce rate</th>
+                      <th scope="col">School name</th>
+                      <th scope="col">Classes</th>
+                      <th scope="col">Teachers</th>
+                      <th scope="col">Average Ratings</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">/argon/</th>
-                      <td>4,569</td>
-                      <td>340</td>
+                      <th scope="row">Bal Vidhya Bhavan</th>
+                      <td>300</td>
+                      <td>20</td>
                       <td>
                         <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        46,53%
+                        7.8 / 10.0
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/index.html</th>
-                      <td>3,985</td>
+                      <th scope="row">Social Welfare Schools Chain</th>
+                      <td>1250</td>
                       <td>319</td>
                       <td>
                         <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        46,53%
+                        6.7 / 10.0
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/charts.html</th>
+                      <th scope="row">DPS Indirapuram</th>
                       <td>3,513</td>
                       <td>294</td>
                       <td>
                         <i className="fas fa-arrow-down text-warning mr-3" />{" "}
-                        36,49%
+                        8.2 / 10.0
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/tables.html</th>
+                      <th scope="row">R.K. Educational Institute</th>
                       <td>2,050</td>
                       <td>147</td>
                       <td>
                         <i className="fas fa-arrow-up text-success mr-3" />{" "}
-                        50,87%
+                        8.3 / 10.0
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">/argon/profile.html</th>
+                      <th scope="row">Divine Convent School</th>
                       <td>1,795</td>
                       <td>190</td>
                       <td>
                         <i className="fas fa-arrow-down text-danger mr-3" />{" "}
-                        46,53%
+                        6.9 / 10.0
                       </td>
                     </tr>
                   </tbody>
@@ -235,7 +241,7 @@ class Index extends React.Component {
                 <CardHeader className="border-0">
                   <Row className="align-items-center">
                     <div className="col">
-                      <h3 className="mb-0">Social traffic</h3>
+                      <h3 className="mb-0">Feedbacks Filled</h3>
                     </div>
                     <div className="col text-right">
                       <Button
@@ -252,14 +258,14 @@ class Index extends React.Component {
                 <Table className="align-items-center table-flush" responsive>
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">Referral</th>
-                      <th scope="col">Visitors</th>
-                      <th scope="col" />
+                      <th scope="col">Source</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Ratio</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">Facebook</th>
+                      <th scope="row">Teachers</th>
                       <td>1,480</td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -275,7 +281,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">Facebook</th>
+                      <th scope="row">Schools</th>
                       <td>5,480</td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -291,7 +297,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">Google</th>
+                      <th scope="row">Students</th>
                       <td>4,807</td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -303,7 +309,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">Instagram</th>
+                      <th scope="row">Associates</th>
                       <td>3,678</td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -319,7 +325,7 @@ class Index extends React.Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">twitter</th>
+                      <th scope="row">Misc.</th>
                       <td>2,645</td>
                       <td>
                         <div className="d-flex align-items-center">

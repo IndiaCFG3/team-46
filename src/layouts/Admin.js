@@ -62,7 +62,7 @@ class Admin extends React.Component {
   render() {
     return (
       <>
-        <Sidebar
+        {/* <Sidebar
           {...this.props}
           routes={routes}
           logo={{
@@ -70,7 +70,7 @@ class Admin extends React.Component {
             imgSrc: require("assets/img/brand/argon-react.png"),
             imgAlt: "..."
           }}
-        />
+        /> */}
         <div className="main-content" ref="mainContent">
           <AdminNavbar
             {...this.props}

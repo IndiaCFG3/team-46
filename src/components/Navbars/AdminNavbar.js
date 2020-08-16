@@ -71,15 +71,12 @@ class AdminNavbar extends React.Component {
                     </span>
                     <Media className="ml-2 d-none d-lg-block">
                       <span className="mb-0 text-sm font-weight-bold">
-                        Jessica Jones
+                        Shivam Goyal
                       </span>
                     </Media>
                   </Media>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-menu-arrow" right>
-                  <DropdownItem className="noti-title" header tag="div">
-                    <h6 className="text-overflow m-0">Welcome!</h6>
-                  </DropdownItem>
                   <DropdownItem to="/admin/user-profile" tag={Link}>
                     <i className="ni ni-single-02" />
                     <span>My profile</span>
