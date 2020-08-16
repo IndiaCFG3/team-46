@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const {objectId} = mongoose.Schema;
+const {ObjectId} = mongoose.Schema;
 
-var unitEvaluationSchema = new Schema({
+var unitEvaluationSchema = new mongoose.Schema({
    schoolName: {
        type:String,
        required: true
