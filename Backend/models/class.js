@@ -25,6 +25,6 @@ var classSchema = new Schema({
         type: String
     }
 
-});
+},{timestamps:true});
 
 module.exports = mongoose.model("Class",classSchema);
