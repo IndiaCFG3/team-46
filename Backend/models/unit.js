@@ -56,11 +56,11 @@ var unitEvaluationSchema = new Schema({
     type: Number,
     default: 0
    },
-   pna: {
+   prna: {
     type: Number,
     default: 0
    },
-   pa: {
+   pra: {
        type: Number,
        default: 0
    },
