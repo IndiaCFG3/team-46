@@ -39,7 +39,7 @@ class Register extends React.Component {
   
   
   handlecapture = (event) => {
-    console.log("handle capture");
+    console.log("Image Upload");
     event.preventDefault();
       
       const file=event.target.files[0];
@@ -60,7 +60,7 @@ class Register extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({value: event.target.value, school: event.target.school});
   }
 
   handleSubmit = async(event) => {
