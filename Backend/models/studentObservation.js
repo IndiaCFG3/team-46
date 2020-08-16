@@ -1,20 +1,28 @@
+const express = require('express');
+const router = express.Router();
 const mongoose = require('mongoose');
-const {objectId} = mongoose.Schema;
 
-var studentObsSchema = new Schema({
-    photo: {
-            data: Buffer,
-            contentType: String
-         },
-    tag: {
-        type: String
-    },
-    comment: {
-        type: String,
-        maxlength: 2000
-    }
+const Student = require("../models/studentObservation");
+//const Class = mongoose.model("classObservation")
 
+router.post('/student', (req,res) => {
+    const { tags, notes } = req.body;
    
+    const student = new Student(req.body);
+    student.save((err, student) => {
+        if(err){
+            return res.status(400).json({
+                message: "NOT able to save class in the Database",
+                error: err
+            })
+        }
+        res.json({
+            "tags": student.tags,
+            "notes":student.notes
+        });
+    });
 });
+  
 
-module.exports = mongoose.model("StudentObs",studentObsSchema);
+
+module.exports = router;
