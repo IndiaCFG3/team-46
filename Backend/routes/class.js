@@ -26,6 +26,19 @@ router.post('/class', (req,res) => {
     })
 });
   
+// Get Route
+
+router.get('/getclass', (req,res)=>{
+    Class.findOne({studentteacherId:req.body.studentteacherId})
+    .then(classs => {
+            res.json({classs})
+    
+    }).catch(err=> {
+        return res.status(404).json({
+            error: "Not found"
+        })
+    })
+})
 
 
 module.exports = router
