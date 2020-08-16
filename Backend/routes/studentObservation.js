@@ -5,9 +5,7 @@ const mongoose = require('mongoose');
 const Student = require("../models/studentObservation");
 //const Class = mongoose.model("classObservation")
 
-router.post('/student', (req,res) => {
-    const { tags, notes } = req.body;
-   
+router.post('/student', (req,res) => {   
     const student = new Student(req.body);
     student.save((err, student) => {
         if(err){
@@ -17,12 +15,22 @@ router.post('/student', (req,res) => {
             })
         }
         res.json({
-            "tags": student.tags,
-            "notes":student.notes
+            "tags": student.tag,
+            "Comment":student.comment
         });
     });
 });
   
-
+router.get('/getstudent', (req,res)=>{
+    Student.find({tag:req.body.tag})
+    .then(student => {
+            res.json({student})
+    
+    }).catch(err=> {
+        return res.status(404).json({
+            error: "Not found"
+        })
+    })
+})
 
 module.exports = router
