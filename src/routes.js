@@ -17,7 +17,7 @@
 */
 import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
-import Maps from "views/examples/Maps.js";
+import Form2 from "views/examples/Form2.js";
 import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
@@ -39,11 +39,11 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/maps",
-    name: "Maps",
+    path: "/form2",
+    name: "Form2",
     icon: "ni ni-pin-3 text-orange",
-    component: Maps,
-    layout: "/admin"
+    component: Form2,
+    layout: "/auth"
   },
   {
     path: "/user-profile",
