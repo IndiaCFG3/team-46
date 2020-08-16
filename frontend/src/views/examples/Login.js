@@ -48,9 +48,10 @@ class Login extends React.Component {
                   className="btn-neutral btn-icon"
                   color="default"
                   href="#pablo"
-                  onClick={e => e.preventDefault()}
                 >
-                  <span className="btn-inner--text">Unit Evaluation Form</span>
+                  <a href="/auth/register" target="_blank">
+                    <span className="btn-inner--text">Unit Evaluation Form</span>
+                  </a>
                 </Button>
               </div>
               <div className="btn-wrapper text-center pb-3">
@@ -58,9 +59,11 @@ class Login extends React.Component {
                   className="btn-neutral btn-icon"
                   color="default"
                   href="#pablo"
-                  onClick={e => e.preventDefault()}
                 >
+                <a href="/auth/form2" target="_blank">
                   <span className="btn-inner--text">Student Observation Form</span>
+                </a>
+
                 </Button>
               </div>
               <div className="btn-wrapper text-center pb-3">
@@ -68,7 +71,6 @@ class Login extends React.Component {
                   className="btn-neutral btn-icon"
                   color="default"
                   href="#pablo"
-                  onClick={e => e.preventDefault()}
                 >
                   <span className="btn-inner--text">Student-teacher Observation Form</span>
                 </Button>
@@ -81,9 +83,11 @@ class Login extends React.Component {
                   className="btn-neutral btn-icon"
                   color="default"
                   href="#pablo"
-                  onClick={e => e.preventDefault()}
                 >
+                  
+                <a href="/admin/index" target="_blank">
                   <span className="btn-inner--text">Inqui-Lab Associate Dashboard</span>
+                  </a>
                 </Button>
               </div>
               <div className="btn-wrapper text-center pb-3">
@@ -91,7 +95,6 @@ class Login extends React.Component {
                   className="btn-neutral btn-icon"
                   color="default"
                   href="#pablo"
-                  onClick={e => e.preventDefault()}
                 >
                   <span className="btn-inner--text">Student Teacher Dashboard</span>
                 </Button>

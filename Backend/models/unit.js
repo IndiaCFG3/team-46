@@ -72,12 +72,10 @@ var unitEvaluationSchema = new mongoose.Schema({
        type: String
    },
    st1: {
-    type: ObjectId,
-    ref: "Class"
+    type: String
    },
    st2: {
-    type: ObjectId,
-    ref: "Class"
+    type: String
    },
    photo: {
        type: String

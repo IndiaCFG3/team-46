@@ -16,6 +16,7 @@
 
 */
 import React from "react";
+import ipfs from "./ipfs";
 
 // reactstrap components
 import {
@@ -34,13 +35,66 @@ import {
 } from "reactstrap";
 
 class Register extends React.Component {
+
+  
+  
+  handlecapture = (event) => {
+    console.log("handle capture");
+    event.preventDefault();
+      
+      const file=event.target.files[0];
+      const reader =new window.FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onloadend=()=>{
+        this.setState({buffer:Buffer(reader.result)});
+        console.log("buffer",this.state.buffer);
+      }
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {buffer: '', ipfshash: '', value: '', school: '', class: '', st1: '', st2: '', unit: '',  teamno: '', ideas: '', plan: '', make_test: '', presentation: '', no_of_students: '', comments: '', image: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit = async(event) => {
+    alert('Form submitted Successfully!');
+    event.preventDefault();
+    event.preventDefault();
+    console.log("handle submit");
+    console.log(this.state.buffer);
+    ipfs.files.add(this.state.buffer,(error,result)=>{
+      if(error)
+      {
+      console.error(error);
+      return 
+      }
+      this.setState({ipfshash:result[0].hash});
+      console.log('ipfshash',this.state.ipfshash);
+    })
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ schoolName: this.state.school, className: this.state.class })
+    };
+    fetch('http://localhost:8000/api/unit', requestOptions)
+        .then(response => response.json())
+        .then(data => this.setState({ postId: data.id }));
+  }
+
   render() {
     return (
       <>
         <Col lg="12" md="7">
           <Card className="bg-secondary shadow border-0">
             <CardHeader className="bg-transparent pb-5">
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col md="6">
               <FormGroup>
@@ -48,6 +102,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="School Name"
                   type="email"
+                  value={this.state.school} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -57,6 +112,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="Class Name"
                   type="email"
+                  value={this.state.class} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -66,6 +122,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="Student Teacher 1 Name"
                   type="email"
+                  value={this.state.st1} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -75,6 +132,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="Student Teacher 2 Name"
                   type="email"
+                  value={this.state.st2} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -84,6 +142,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="Unit"
                   type="email"
+                  value={this.state.unit} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -93,6 +152,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="Team Number"
                   type="number"
+                  value={this.state.teamno} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -289,6 +349,7 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="No of Students Attempted"
                   type="number"
+                  value={this.state.no_of_students} onChange={this.handleChange} 
                 />
               </FormGroup>
             </Col>
@@ -301,6 +362,7 @@ class Register extends React.Component {
             placeholder="Comments / Ideas to Showcase"
             rows="3"
             type="textarea"
+            value={this.state.comments} onChange={this.handleChange} 
           />              
           </FormGroup>
             </Col>
@@ -313,11 +375,12 @@ class Register extends React.Component {
                   id="exampleFormControlInput1"
                   placeholder="Team Number"
                   type="file"
+                  value={this.state.file} onChange={this.handlecapture} 
                 />
               </FormGroup>
             </Col>
             <Col md="12">      
-              <Button block color="primary" size="lg" type="button">
+              <Button block color="primary" size="lg" type="submit">
                 Submit
               </Button>
             </Col>

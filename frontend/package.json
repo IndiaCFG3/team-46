@@ -57,7 +57,9 @@
     "react-google-maps": "9.4.5",
     "react-router-dom": "5.1.2",
     "react-scripts": "3.4.0",
-    "reactstrap": "8.4.1"
+    "reactstrap": "8.4.1",
+    "ipfs-api": "^26.1.2",
+    "ipfs-http-client": "^42.0.0"
   },
   "devDependencies": {
     "@types/googlemaps": "3.39.2",
