@@ -25,6 +25,8 @@ router.post('/unit', (req,res) => {
 // Get Route
 router.get('/getunit', (req,res)=>{
     Unit.findOne({schoolName:req.body.schoolName,className:req.body.className,unit:req.body.unit,teamno:req.body.teamno})
+    .populate("st1", "_id studentteacherId")
+    .populate("st2", "_id studentteacherId")
     .then(unitt => {
             if(unitt.ina === 0){
                 unitt.ina = undefined
