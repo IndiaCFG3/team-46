@@ -101,7 +101,6 @@ class Register extends React.Component {
                 <Input
                   id="exampleFormControlInput1"
                   placeholder="School Name"
-                  type="email"
                   value={this.state.school} onChange={this.handleChange} 
                 />
               </FormGroup>
@@ -111,7 +110,6 @@ class Register extends React.Component {
                 <Input
                   id="exampleFormControlInput1"
                   placeholder="Class Name"
-                  type="email"
                   value={this.state.class} onChange={this.handleChange} 
                 />
               </FormGroup>
@@ -121,7 +119,6 @@ class Register extends React.Component {
                 <Input
                   id="exampleFormControlInput1"
                   placeholder="Student Teacher 1 Name"
-                  type="email"
                   value={this.state.st1} onChange={this.handleChange} 
                 />
               </FormGroup>
@@ -131,7 +128,6 @@ class Register extends React.Component {
                 <Input
                   id="exampleFormControlInput1"
                   placeholder="Student Teacher 2 Name"
-                  type="email"
                   value={this.state.st2} onChange={this.handleChange} 
                 />
               </FormGroup>
@@ -141,7 +137,6 @@ class Register extends React.Component {
                 <Input
                   id="exampleFormControlInput1"
                   placeholder="Unit"
-                  type="email"
                   value={this.state.unit} onChange={this.handleChange} 
                 />
               </FormGroup>
