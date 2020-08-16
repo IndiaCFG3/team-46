@@ -27,7 +27,6 @@ router.post('/class', (req,res) => {
 });
   
 // Get Route
-
 router.get('/getclass', (req,res)=>{
     Class.findOne({studentteacherId:req.body.studentteacherId})
     .then(classs => {

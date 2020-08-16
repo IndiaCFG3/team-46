@@ -22,6 +22,19 @@ router.post('/unit', (req,res) => {
   
 
 // Get Route
+// Get Route
+router.get('/getunit', (req,res)=>{
+    Unit.findOne({schoolName:req.body.schoolName,className:req.body.className,unit:req.body.unit,teamno:req.body.teamno})
+    .then(unit => {
+            res.json({unit})
+    
+    }).catch(err=> {
+        return res.status(404).json({
+            error: "Not found"
+        })
+    })
+})
+
 
 router.get('/user/:userId', requireLogin, (req,res)=>{
     User.findOne({_id:req.params.userId})
